@@ -75,9 +75,13 @@ class App extends Component {
 
     render() {
       const {videoDatas} = this.state;
+      if (videoDatas.length == 0) {
+        return null;
+      }
       return (
-        <div className="App">
+        <div className="wrap">
           <Carousel
+            infinite={true}
             selectedIndex={0}
             autoplay={false}
             dots={false}
