@@ -5,9 +5,9 @@ react， antd-mobile, axios
 
 ## 2、启动项目
 ```
+npm install
 cd app
 npm run start / npm run build 
-
 ```
 
 ## 3、数据来源
