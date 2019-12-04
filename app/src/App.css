@@ -10,3 +10,11 @@ p{
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
+
+
+#otherCompBtn{
+  position: fixed;
+  right: 16px;
+  top: 16px;
+  z-index: 999;
+}

@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
-import {Carousel} from 'antd-mobile';
+import {Carousel, Button} from 'antd-mobile';
 import Detail from './pages/Detail/index';
 import {getTodayVideo} from './services/index';
+import Comps from './pages/Comps/index';
 
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
         this.state = {
             videoDatas: [],
             innerHeight: window.innerHeight,
+            showSwiper: true,
         };
     }
 
@@ -42,57 +44,80 @@ class App extends Component {
     }
 
     afterChange = (index) => {
-      console.log('index', index);
-      if (index === this.state.fromIndex) {
-        return;
-      }
-      const myVideoList = window.myVideoList;
-      if (myVideoList && myVideoList.length > 0) {
-        myVideoList.map((item, num) => {
-            if (num === index) {
-              if (item.video) {
-                  const playPromise = item.video.play();
-                  playPromise && playPromise.then(res => {
-                    console.log('video 播放正常：', res);
-                  }).catch(err => {
-                    console.log('video 播放出错：', err);
-                  });
+        console.log('index', index);
+        if (index === this.state.fromIndex) {
+          return;
+        }
+        const myVideoList = window.myVideoList;
+        if (myVideoList && myVideoList.length > 0) {
+          myVideoList.map((item, num) => {
+              if (num === index) {
+                if (item.video) {
+                    const playPromise = item.video.play();
+                    playPromise && playPromise.then(res => {
+                      console.log('video 播放正常：', res);
+                    }).catch(err => {
+                      console.log('video 播放出错：', err);
+                    });
+                }
               }
-            }
-            if (num === this.state.fromIndex) {
-                item.video && item.video.pause();
-            }
+              if (num === this.state.fromIndex) {
+                  item.video && item.video.pause();
+              }
+          })
+        }
+    }
+
+    gotoOtherComp = () => {
+        this.setState({
+            showSwiper: false,
         })
-      }
-  }
+    }
+
+    showHomePage = () => {
+      this.setState({
+          showSwiper: true,
+      })
+    }
 
     render() {
-      const {videoDatas} = this.state;
+      const {videoDatas, showSwiper} = this.state;
       if (videoDatas.length == 0) {
         return null;
       }
       console.log('videoDatas', videoDatas);
       return (
         <div className="wrap">
-          <Carousel
-            infinite={true}
-            selectedIndex={0}
-            autoplay={false}
-            dots={false}
-            vertical={true}
-            beforeChange={(from, to) => this.beforeChange(from, to)}
-            afterChange={index => this.afterChange(index)}
-          >
-              {
-                videoDatas && videoDatas.length>0 && videoDatas.map((item, index) => {
-                    return (
-                      <div key={index} style={{position: 'relative', width: '100%', height: this.state.innerHeight }} >
-                          <Detail infos={item} />
-                      </div>
-                    )
-                })
-              }
-          </Carousel>
+          {
+              showSwiper && <Button inline type="primary" id="otherCompBtn" onClick={()=>this.gotoOtherComp()}>其他组件</Button>
+          }
+          {
+              !showSwiper && <Comps showHomePage={this.showHomePage} />
+          }
+          {/* 类似抖音上下滚动视频列表 */}
+          {
+              showSwiper && (
+                <Carousel
+                  infinite={true}
+                  selectedIndex={0}
+                  autoplay={false}
+                  dots={false}
+                  vertical={true}
+                  beforeChange={(from, to) => this.beforeChange(from, to)}
+                  afterChange={index => this.afterChange(index)}
+                >
+                    {
+                      videoDatas && videoDatas.length>0 && videoDatas.map((item, index) => {
+                          return (
+                            <div key={index} style={{position: 'relative', width: '100%', height: this.state.innerHeight }} >
+                                <Detail infos={item} />
+                            </div>
+                          )
+                      })
+                    }
+                </Carousel>
+              )
+          }
         </div>
       )
     }

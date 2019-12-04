@@ -1,0 +1,81 @@
+.noticebar-wrap{
+    width: 100%;
+    height: 36px;
+    background: #FFF1EF;
+    position: relative;
+    overflow: hidden;
+}
+
+.icon-wrap{
+    width: 30px;
+    height: 36px;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: #FFF1EF;
+    z-index: 99;
+}
+.left-wrap{
+    left: 0;
+}
+.right-wrap{
+    right: 0;
+    justify-content: flex-start;
+}
+
+.noticeIcon{
+    margin-right: 4px;
+}
+
+.closeIcon{
+    margin-left: 4px;
+}
+
+.content{
+    height: 36px;
+    line-height: 36px;
+    text-align: left;
+    padding: 0 30px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    display: inline-block;
+    font-size:14px;
+    font-weight:400;
+    color:rgba(255,111,93,1);
+}
+
+.playNotice{
+    animation-name: leftPlay;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes leftPlay {
+    from {
+        transform: translate3d(20%, 0, 0);
+    }
+    to {
+        transform: translate3d(-80%, 0, 0);
+    }
+}
+
+.hideNotice{
+    animation-name: heightPlay;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+
+@keyframes heightPlay {
+    from {
+        height: 36px;
+        display: block;
+    }
+    to {
+        height: 0px;
+        display: none;
+    }
+}
