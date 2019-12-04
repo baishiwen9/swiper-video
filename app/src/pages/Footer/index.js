@@ -3,17 +3,6 @@ import './index.css';
 
 
 class Footer extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-    }
-
-    componentDidMount() {
-
-    }
-
     render() {
         const {description, author} = this.props;
         return (
@@ -21,7 +10,7 @@ class Footer extends Component{
                 <div className="userInfo">
                     <img className="avatar" src={author && author.icon} alt="avatar" />
                     <div className="basic-infos">
-                        <p className="name text">{author && author.nickname}</p>
+                        {/* <p className="name text">{author && author.nickname}</p> */}
                         <p className="desc text">{description}</p>
                     </div>
                 </div>

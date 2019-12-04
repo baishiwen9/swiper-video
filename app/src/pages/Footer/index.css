@@ -35,7 +35,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     word-break: break-all;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     /* // 加上下面这两个就好了 */
     /* autoprefixer: off */
@@ -55,7 +55,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     word-break: break-all;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     /* // 加上下面这两个就好了 */
     /* autoprefixer: off */

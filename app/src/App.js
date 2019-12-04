@@ -16,21 +16,16 @@ class App extends Component {
 
     componentDidMount() {
         getTodayVideo().then(res => {
-            console.log(res);
             if (res && res.length > 0) {
-                const datas = res.filter(item => {
-                    return item.data && item.data.content && item.data.content && item.data.content.data;
-                });
-                
-                if (datas.length > 0) {
-                    const result = [];
-                    datas.map(item => {
+                const result = [];
+                res.map(item => {
+                    if (item.data && item.data.content && item.data.content && item.data.content.data) {
                         result.push(item.data.content.data);
-                    });
-                    this.setState({
-                        videoDatas: result
-                    })
-                }
+                    }
+                });
+                this.setState({
+                    videoDatas: result
+                });
             }
         }).catch(err => {
             console.log('获取视频列表出错：', err);
@@ -51,14 +46,12 @@ class App extends Component {
       if (index === this.state.fromIndex) {
         return;
       }
-      
       const myVideoList = window.myVideoList;
       if (myVideoList && myVideoList.length > 0) {
         myVideoList.map((item, num) => {
             if (num === index) {
               if (item.video) {
                   const playPromise = item.video.play();
-                  console.log(playPromise)
                   playPromise && playPromise.then(res => {
                     console.log('video 播放正常：', res);
                   }).catch(err => {
@@ -78,6 +71,7 @@ class App extends Component {
       if (videoDatas.length == 0) {
         return null;
       }
+      console.log('videoDatas', videoDatas);
       return (
         <div className="wrap">
           <Carousel

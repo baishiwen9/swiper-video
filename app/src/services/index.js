@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-
+// 获取每日推荐视频列表
 export const getTodayVideo = () => {
     return new Promise((resolve, reject) => {
         axios.get('https://api.apiopen.top/todayVideo').then(res => {

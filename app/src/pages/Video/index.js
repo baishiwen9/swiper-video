@@ -5,15 +5,12 @@ import './index.css';
 class Video extends Component{
     constructor(props) {
         super(props);
-        this.state = {
-
-        }
         this.video = React.createRef();
     }
 
     componentDidMount() {
         const video = this.video.current;
-        if (window.myVideoList) {
+        if (window.myVideoList && Object.prototype.toString.call(window.myVideoList) === '[object Array]') {
             window.myVideoList.push({
                 id: this.props.id,
                 video: video
@@ -27,7 +24,7 @@ class Video extends Component{
     }
 
     render() {
-        const {autoplay, videoUrl, cover} = this.props;
+        const {videoUrl, cover} = this.props;
         return (
             <div className="video-wrap">
                 <video 
