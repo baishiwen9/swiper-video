@@ -13,7 +13,7 @@ class NoticeBar extends Component {
     }
 
     componentDidMount() {
-
+        this.initAnimate();
     }
 
     closeNotice = () => {
@@ -28,9 +28,24 @@ class NoticeBar extends Component {
         })
     }
 
+    initAnimate = () => {
+        const dom = this.refs.content;
+        if (!dom) {
+            return;
+        }
+        const width = dom.getBoundingClientRect().width;
+        const duration = width / (+this.props.speed ? this.props.speed : 100);
+        let style = {
+            'animationDuration': `${duration}s`
+        };
+        this.setState({
+            style,
+        })
+    }
+
     render() {
         const {content} = this.props;
-        const {showBar, cls} = this.state;
+        const {showBar, cls, style} = this.state;
         return (
             <div>
                 {
@@ -39,7 +54,7 @@ class NoticeBar extends Component {
                             <div className="icon-wrap left-wrap">
                                 <img className="noticeIcon icon" src={noticeIcon} alt="icon" />
                             </div>
-                            <div className='content playNotice'>{content}</div>
+                            <div className='text-content playNotice' ref='content' style={style}>{content}</div>
                             <div className="icon-wrap right-wrap">
                                 <img className="closeIcon icon" src={closeIcon} alt="icon" onClick={() => this.closeNotice()}/>
                             </div>

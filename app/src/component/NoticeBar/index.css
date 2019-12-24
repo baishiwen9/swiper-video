@@ -33,11 +33,10 @@
     margin-left: 4px;
 }
 
-.content{
+.text-content{
     height: 36px;
     line-height: 36px;
     text-align: left;
-    padding: 0 30px;
     box-sizing: border-box;
     white-space: nowrap;
     display: inline-block;
@@ -47,18 +46,16 @@
 }
 
 .playNotice{
-    animation-name: leftPlay;
-    animation-duration: 10s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+    padding-left: 100%;
+    -webkit-animation: leftPlay 1s linear infinite both;
+    animation: leftPlay 1s linear infinite both;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0)
 }
 
 @keyframes leftPlay {
-    from {
-        transform: translate3d(20%, 0, 0);
-    }
     to {
-        transform: translate3d(-80%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
     }
 }
 
