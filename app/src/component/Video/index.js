@@ -32,7 +32,7 @@ class Video extends Component{
                     style={{ 
                         objectFit: 'contain', 
                         width: "100%", 
-                        height: window.innerHeight - 120,
+                        height: window.innerHeight - 180,
                     }}
                     airplay="allow"
                     playsInline={true}
