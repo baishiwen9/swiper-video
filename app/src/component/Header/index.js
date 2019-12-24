@@ -18,7 +18,7 @@ class Header extends Component {
         return (
             <div className="header-wrap" >
                 <img className="backIcon" src={backIcon} alt="icon" onClick={()=>this.backHome()} />
-                <p className="title">其他组件</p>
+                <p className="title">navbar组件</p>
             </div>
         )
     }
