@@ -3,8 +3,13 @@ import './index.css';
 import Header from './../../component/Header/index';
 import NoticeBar from './../../component/NoticeBar/index';
 import EmptyTips from './../../component/EmptyTips/index';
+import InputNumber from './../../component/InputNumber/index';
 
 class Comps extends Component {
+
+    inputNumberChange = (e) => {
+        console.log(e);
+    }
 
     render() {
         return (
@@ -20,6 +25,10 @@ class Comps extends Component {
                     <div className="list">
                         <h3>空提示组件</h3>
                         <EmptyTips title="没有更多数据了~" />
+                    </div>
+                    <div className="list">
+                        <h3>inputNumber组件</h3>
+                        <InputNumber min={1} max={999} step={1} defaultValue={1} onChanged={(e) => this.inputNumberChange(e)}/>
                     </div>
                 </div>
             </div>
