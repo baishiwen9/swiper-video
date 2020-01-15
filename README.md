@@ -13,5 +13,8 @@ npm run start / npm run build
 ```
 
 ## 4、视频数据来源
-数据来自： https://api.apiopen.top（非常感谢）
+数据来自： https://api.apiopen.top
 文档地址：https://www.jianshu.com/p/e6f072839282
+
+## 5、线上浏览地址
+https://baishiwen9.github.io/swiper-video/app/build/index.html
